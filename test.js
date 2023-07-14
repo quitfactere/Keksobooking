@@ -1,14 +1,7 @@
-const ADVERTISEMENT_COUNT = 10;
+let result = [];
 
-console.log
-
-
-let author = [];
-const addAuthors = () => {
-  for (let i = 0; i < ADVERTISEMENT_COUNT; i++) {
-    author.push({avatar: 'img/avatars/user' + String(i).padStart(2, '0') + '.png'})
-  }
-  return author;
+for (let i = 0; i < 5; i++) {
+  result[i] = function () {
+    console.log(i);
+  };
 }
-
-console.log(addAuthors());
