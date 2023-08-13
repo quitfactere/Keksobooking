@@ -7,6 +7,7 @@
     "type": "git",
     "url": "{{sshUrl}}"
   },
+  "type": "module",
   "bugs": {
     "url": "{{bugsUrl}}"
   },

@@ -23,34 +23,48 @@ let imageIndex = 1;
 const getFeatures = () => {
   let featuresCount = 0;
   let featuresSelect = [];
-  for (let i = 0; i <= getRandomInt(features.length - (features.length - 1), features.length); i++) {
+  for (let i = 0; i <= getRandomInt(features.length - features.length, features.length - 1); i++) {
     featuresCount = i;
     featuresSelect[i] = features[i];
   }
   return featuresSelect;
 }
 
+/*const photoHouse = (array) => {
+
+  return () => {
+    let currentValue = getRandomElementArr(array);
+    while (photos.includes(currentValue)) {
+      currentValue = getRandomElementArr(array);
+    }
+    photos.push(currentValue);
+    return photos;
+  };
+};*/
+
 const photoHouse = () => {
   let photos = [];
   for (let i = 1; i <= getRandomInt(images.length - (images.length - 1), images.length); i++) {
-    photos.push(getRandomElementArr(images));
+    let currentPhoto = getRandomElementArr(images);
+    while (photos.includes(currentPhoto)) {
+      currentPhoto = getRandomElementArr(images);
+    }
+    photos.push(currentPhoto);
   }
   return photos;
-};
+}
 
 let coordinates = () => {
-  let location = [];
-  location.push({
+  let location = {
     x: getRandomFloat(35.65000, 35.70000, 5), y: getRandomFloat(139.70000, 139.75000, 5),
-  });
+  };
   return location;
 };
 
 const addOffers = () => {
-  let offer = [];
-  offer.push({
+  let offer = {
     title: getRandomElementArr(titles),
-    adress: 'долгота: ' + getRandomInt(0, 180, 2) + ', широта: ' + getRandomInt(0, 90, 2),
+    address: 'долгота: ' + getRandomInt(0, 180, 2) + ', широта: ' + getRandomInt(0, 90, 2),
     price: getRandomInt(100, 5000),
     type: getRandomElementArr(types),
     guests: getRandomInt(1, 5),
@@ -59,11 +73,11 @@ const addOffers = () => {
     features: getFeatures(),
     description: description,
     photos: photoHouse(),
-  });
+  };
   return offer;
 };
 
-const addAdvertisement = () => {
+const advertisementConstruct = () => {
   for (let i = 0; i < ADVERTISEMENT_COUNT; i++) {
     advertisements.push({
       author: ({avatar: 'img/avatars/user' + String(imageIndex).padStart(2, '0') + '.png'}),
@@ -75,6 +89,4 @@ const addAdvertisement = () => {
   return advertisements;
 };
 
-export {addAdvertisement};
-
-
+export {advertisementConstruct};
