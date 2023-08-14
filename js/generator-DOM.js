@@ -10,28 +10,22 @@ const ads = advertisementConstruct();
 const housingTypeSelection = () => {
   const housingType = document.querySelector('#type');
   const typeItems = housingType.querySelectorAll('option');
-  let type;
 
-  const getChoiceType = () => {
-    housingType.addEventListener('change', function () {
-      typeItems.forEach((item) => {
-        console.log(typeItems[0].value);
-        /*switch (item.value) {
-          case 'flat':
-            type = 'Квартира';
-          case 'bungalow':
-            type = 'Бунгало';
-          case 'house':
-            type = 'Дом';
-          case 'palace':
-            type = 'Дворец';
-        }*/
-      })
-    })
-    return type;
-  }
+  typeItems.forEach((type) => {
+  })
+  housingType.addEventListener('change', function () {
+    switch (type.value) {
+      case ('flat'):
+        return card.querySelector('.popup__type').textContent = 'Квартира';
+      case ('bungalow'):
+        return card.querySelector('.popup__type').textContent = 'Бунгало';
+      case ('house'):
+        return card.querySelector('.popup__type').textContent = 'Дом';
+      case ('palace'):
+        return card.querySelector('.popup__type').textContent = 'Дворец';
+    }
+  })
 
-  getChoiceType();
 }
 
 //удаляет элементы списка удобств содержащиеся в шаблоне
@@ -101,8 +95,7 @@ const renderCard = (title, address, price, type, checkin, checkout, features, de
 const renderCards = () => {
   let cardsListFragment = document.createDocumentFragment();
 
-  cardsListFragment.appendChild(renderCard(ads[0].offer.title, ads[0].offer.address, ads[0].offer.price, ads[0].offer.type, ads[0].offer.checkin,
-    ads[0].offer.checkout, ads[0].offer.features, ads[0].offer.description, ads[0].offer.photos, ads[0].author.avatar));
+  cardsListFragment.appendChild(renderCard(ads[0].offer.title, ads[0].offer.address, ads[0].offer.price, ads[0].offer.type, ads[0].offer.checkin, ads[0].offer.checkout, ads[0].offer.features, ads[0].offer.description, ads[0].offer.photos, ads[0].author.avatar));
   mapCanvas.appendChild(cardsListFragment);
 }
 
