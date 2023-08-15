@@ -1,23 +1,19 @@
 import {advertisementConstruct} from './js/data.js';
+const housingTypeSelection = () => {
+  const housingType = document.querySelector('#type');
 
-let ads = advertisementConstruct();
-console.log(ads[0].offer.type);
-
-const selectType = (type) => {
-  switch (type) {
-    case 'flat':
-      return 'Квартира';
-    case 'bungalow':
-      return 'Бунгало';
-    case 'house':
-      return 'Дом';
-    case 'palace':
-      return 'Дворец';
-    default:
-      return 'Любой тип жилья';
-  }
+  housingType.addEventListener('change', function () {
+    switch (type.value) {
+      case ('flat'):
+        return 'Квартира';
+      case ('bungalow'):
+        return 'Бунгало';
+      case ('house'):
+        return 'Дом';
+      case ('palace'):
+        return 'Дворец';
+    }
+  })
 }
-
-let select = selectType(ads);
-console.log(ads[5].offer.description);
-
+housingTypeSelection();
+console.log(type);

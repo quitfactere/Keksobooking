@@ -30,18 +30,6 @@ const getFeatures = () => {
   return featuresSelect;
 }
 
-/*const photoHouse = (array) => {
-
-  return () => {
-    let currentValue = getRandomElementArr(array);
-    while (photos.includes(currentValue)) {
-      currentValue = getRandomElementArr(array);
-    }
-    photos.push(currentValue);
-    return photos;
-  };
-};*/
-
 const photoHouse = () => {
   let photos = [];
   for (let i = 1; i <= getRandomInt(images.length - (images.length - 1), images.length); i++) {
@@ -67,6 +55,7 @@ const addOffers = () => {
     address: 'долгота: ' + getRandomInt(0, 180, 2) + ', широта: ' + getRandomInt(0, 90, 2),
     price: getRandomInt(100, 5000),
     type: getRandomElementArr(types),
+    rooms: getRandomInt(1, 3),
     guests: getRandomInt(1, 5),
     checkin: getRandomElementArr(checkin),
     checkout: getRandomElementArr(checkout),
