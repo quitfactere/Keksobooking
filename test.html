@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TEST</title>
+</head>
+<body>
+<script>
+  /* Создайте объект calculator (калькулятор) с тремя методами:
+   read() (читать) запрашивает два значения и сохраняет их как свойства объекта.
+   sum() (суммировать) возвращает сумму сохранённых значений.
+   mul() (умножить) перемножает сохранённые значения и возвращает результат.*/
+  let calculator = {
+    read(a, b) {
+      this.a = a;
+      this.b = b
+    },
+
+    sum() {
+      return this.a + this.b;
+    },
+
+    mul() {
+      return this.a * this.b;
+    }
+  };
+
+  calculator.read(2, 3);
+  //alert(calculator.sum());
+  alert(calculator.mul());
+</script>
+</body>
+</html>

@@ -1,29 +1,12 @@
 import {advertisementConstruct} from './data.js';
+import {housingTypeSelection} from './form-ad.js';
+
 const cardTemplate = document.querySelector('#card').content;
 const popup = cardTemplate.querySelector('.popup');
 const mapCanvas = document.querySelector('#map-canvas');
 const card = popup.cloneNode(true);
 const featuresList = card.querySelector('.popup__features');
 const ads = advertisementConstruct();
-console.log(ads);
-
-console.log(type);
-const housingTypeSelection = () => {
-  const housingType = document.querySelector('#type');
-
-  type.addEventListener('change', function () {
-    switch (type.value) {
-      case ('flat'):
-        return card.querySelector('.popup__type').textContent = 'Квартира';
-      case ('bungalow'):
-        return card.querySelector('.popup__type').textContent = 'Бунгало';
-      case ('house'):
-        return card.querySelector('.popup__type').textContent = 'Дом';
-      case ('palace'):
-        return card.querySelector('.popup__type').textContent = 'Дворец';
-    }
-  })
-}
 
 //удаляет элементы списка удобств содержащиеся в шаблоне
 const removeExistingFeatures = () => {
@@ -74,7 +57,11 @@ const addPhoto = () => {
   return imageContainer;
 }
 
-const renderCard = (title, address, price, type, rooms, guests, checkin, checkout, features, description, photo, avatar) => {
+const renderCard = ({ author: { avatar: avatar},
+  offer: {address: address, title: title,
+    price: price, rooms: rooms, guests: guests, checkin: checkin,
+    checkout: checkout, description: description}
+}) => {
 
   card.querySelector('.popup__title').textContent = title;
   card.querySelector('.popup__text--address').textContent = address;
@@ -86,18 +73,24 @@ const renderCard = (title, address, price, type, rooms, guests, checkin, checkou
   card.querySelector('.popup__description').textContent = description;
   card.querySelector('.popup__photo').src = addPhoto();
   card.querySelector('.popup__avatar').src = avatar;
-  
   return card;
 }
 //console.log(card);
 const renderCards = () => {
   let cardsListFragment = document.createDocumentFragment();
+  //ads.forEach((ad) => {
+  cardsListFragment.appendChild(renderCard(ads[1]));
 
-  cardsListFragment.appendChild(renderCard(ads[0].offer.title, ads[0].offer.address,
-    ads[0].offer.price, ads[0].offer.type, ads[0].offer.rooms, ads[0].offer.guests,
-    ads[0].offer.checkin, ads[0].offer.checkout, ads[0].offer.features,
-    ads[0].offer.description, ads[0].offer.photos, ads[0].author.avatar));
-  mapCanvas.appendChild(cardsListFragment);
+  const cardElements = card.querySelectorAll('*');
+  cardElements.forEach((elem) => {
+    if (elem === undefined || '' || null) {
+      elem.classList.add('visually-hidden');
+    }
+  })
+  //mapCanvas.appendChild(cardsListFragment);
+  //})
 }
 
-export {ads, renderCards};
+
+
+export {card, ads, renderCards};

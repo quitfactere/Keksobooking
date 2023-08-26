@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="leaflet/leaflet.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кексобукинг</title>
 </head>
@@ -28,6 +29,7 @@
             <option value="any" selected>Любой тип жилья</option>
             <option value="palace">Дворец</option>
             <option value="flat">Квартира</option>
+            <option value="Hotel">Отель</option>
             <option value="house">Дом</option>
             <option value="bungalow">Бунгало</option>
           </select>
@@ -96,14 +98,15 @@
           <label class="ad-form__label" for="type">Тип жилья</label>
           <select id="type" name="type">
             <option value="bungalow">Бунгало</option>
-            <option value="flat" selected>Квартира</option>
+            <option value="flat" min="1000" selected>Квартира</option>
+            <option value="hotel">Отель</option>
             <option value="house">Дом</option>
             <option value="palace">Дворец</option>
           </select>
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000">
+          <input id="price" name="price" type="number" placeholder="1000">
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--time">
           <label class="ad-form__label" for="timein">Время заезда и выезда</label>
@@ -166,7 +169,7 @@
           </div>
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--submit">
-          <button class="ad-form__submit" type="submit">Опубликовать</button>
+          <button class="ad-form__submit" type="submit" disabled>Опубликовать</button>
           или <button class="ad-form__reset" type="reset">очистить</button>
         </fieldset>
       </form>
@@ -228,5 +231,6 @@
     </div>
   </template>
 <script src="js/main.js" type="module"></script>
+  <script src="leaflet/leaflet.js" type="module"></script>
 </body>
 </html>

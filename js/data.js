@@ -42,17 +42,18 @@ const photoHouse = () => {
   return photos;
 }
 
-let coordinates = () => {
+let getCoordinates = () => {
   let location = {
-    x: getRandomFloat(35.65000, 35.70000, 5), y: getRandomFloat(139.70000, 139.75000, 5),
+    lat: getRandomFloat(35.65000, 35.70000, 5),
+    lng: getRandomFloat(139.70000, 139.75000, 5),
   };
   return location;
 };
 
-const addOffers = () => {
+const addOffers = function () {
   let offer = {
     title: getRandomElementArr(titles),
-    address: 'долгота: ' + getRandomInt(0, 180, 2) + ', широта: ' + getRandomInt(0, 90, 2),
+    address: 'долгота: ' + getCoordinates().lat + ', широта: ' + getCoordinates().lng,
     price: getRandomInt(100, 5000),
     type: getRandomElementArr(types),
     rooms: getRandomInt(1, 3),
@@ -66,12 +67,12 @@ const addOffers = () => {
   return offer;
 };
 
-const advertisementConstruct = () => {
+const advertisementConstruct = function () {
   for (let i = 0; i < ADVERTISEMENT_COUNT; i++) {
     advertisements.push({
       author: ({avatar: 'img/avatars/user' + String(imageIndex).padStart(2, '0') + '.png'}),
       offer: addOffers(),
-      location: coordinates()
+      location: getCoordinates()
     })
     imageIndex++;
   }
