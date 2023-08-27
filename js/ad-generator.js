@@ -20,13 +20,11 @@ const removeExistingFeatures = () => {
 removeExistingFeatures();
 
 // создаёт список удобств, из данных объявления
-const featuresListCreate = () => {
+const featuresListCreate = (ad) => {
   let features = [];
-  //ads.forEach((ad) => {
   features = ads[0].offer.features;
-  //});
 
-  let featuresItem = document.createElement('li');
+  const featuresItem = document.createElement('li');
 
   featuresItem.classList.add('popup__feature');
 
@@ -38,8 +36,8 @@ const featuresListCreate = () => {
 
   return featuresList;
 }
-//console.log(ads[0].offer.photos);
-const addPhoto = () => {
+console.log(featuresList);
+const addPhoto = (photoArray) => {
   const imageContainer = card.querySelector('.popup__photos');
   const existingImgElement = imageContainer.querySelector('img');
   const image = document.createElement('img');
@@ -57,10 +55,13 @@ const addPhoto = () => {
   return imageContainer;
 }
 
-const renderCard = ({ author: { avatar: avatar},
-  offer: {address: address, title: title,
+const renderCard = ({
+  author: {avatar: avatar},
+  offer: {
+    address: address, title: title,
     price: price, rooms: rooms, guests: guests, checkin: checkin,
-    checkout: checkout, description: description}
+    checkout: checkout, features: features, description: description,
+  },
 }) => {
 
   card.querySelector('.popup__title').textContent = title;
@@ -75,22 +76,22 @@ const renderCard = ({ author: { avatar: avatar},
   card.querySelector('.popup__avatar').src = avatar;
   return card;
 }
-//console.log(card);
-const renderCards = () => {
-  let cardsListFragment = document.createDocumentFragment();
-  //ads.forEach((ad) => {
-  cardsListFragment.appendChild(renderCard(ads[1]));
+// console.log(card);
+/*const renderCards = (adsArray) => {
+  const cardsListFragment = document.createDocumentFragment();
+  adsArray.forEach((ad) => {
+    cardsListFragment.appendChild(renderCard(ad));
 
-  const cardElements = card.querySelectorAll('*');
-  cardElements.forEach((elem) => {
-    if (elem === undefined || '' || null) {
-      elem.classList.add('visually-hidden');
-    }
+/!*    const cardElements = card.querySelectorAll('*');
+    cardElements.forEach((elem) => {
+      if (elem === undefined || '' || null) {
+        elem.classList.add('visually-hidden');
+      }
+    })*!/
+    //console.log(ad);
+    console.log(adsArray);
   })
-  //mapCanvas.appendChild(cardsListFragment);
-  //})
+    return cardsListFragment;
 }
-
-
-
-export {card, ads, renderCards};
+// console.log(renderCards(ads));*/
+export {card, ads, renderCard};

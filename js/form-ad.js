@@ -1,4 +1,9 @@
-import {card} from './generator-DOM.js';
+import {card} from './ad-generator.js';
+
+const form = document.querySelector('.ad-form');
+const filters = document.querySelector('.map__filters');
+const formArrayElements = Array.from(form.children);
+const filtersArrayElements = Array.from(filters.children);
 
 const housingTypeSelection = () => {
   const housingType = document.querySelector('#type');
@@ -28,7 +33,7 @@ const housingTypeSelection = () => {
     }
   })
 }
-
+housingTypeSelection();
 timein.addEventListener('change', function () {
   switch (timein.value) {
     case ('12:00'):

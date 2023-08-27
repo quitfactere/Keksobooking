@@ -9,7 +9,7 @@ const checkout = ['12:00', '13:00', '14:00'];
 
 const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
-let description = 'Отличное помещение';
+let descriptions = ['Отличное помещение', 'Хата норм', 'Хатка бобра', 'Житие мое', 'Какое житие твое'];
 
 const images = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
@@ -31,7 +31,7 @@ const getFeatures = () => {
 }
 
 const photoHouse = () => {
-  let photos = [];
+  const photos = [];
   for (let i = 1; i <= getRandomInt(images.length - (images.length - 1), images.length); i++) {
     let currentPhoto = getRandomElementArr(images);
     while (photos.includes(currentPhoto)) {
@@ -53,7 +53,7 @@ let getCoordinates = () => {
 const addOffers = function () {
   let offer = {
     title: getRandomElementArr(titles),
-    address: 'долгота: ' + getCoordinates().lat + ', широта: ' + getCoordinates().lng,
+    address: getCoordinates(),
     price: getRandomInt(100, 5000),
     type: getRandomElementArr(types),
     rooms: getRandomInt(1, 3),
@@ -61,7 +61,7 @@ const addOffers = function () {
     checkin: getRandomElementArr(checkin),
     checkout: getRandomElementArr(checkout),
     features: getFeatures(),
-    description: description,
+    description: getRandomElementArr(descriptions),
     photos: photoHouse(),
   };
   return offer;
@@ -72,7 +72,7 @@ const advertisementConstruct = function () {
     advertisements.push({
       author: ({avatar: 'img/avatars/user' + String(imageIndex).padStart(2, '0') + '.png'}),
       offer: addOffers(),
-      location: getCoordinates()
+      location: addOffers().address
     })
     imageIndex++;
   }
