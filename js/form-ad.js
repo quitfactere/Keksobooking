@@ -1,4 +1,4 @@
-import {card} from './ad-generator.js';
+//import {card} from './ad-generator.js';
 
 const form = document.querySelector('.ad-form');
 const filters = document.querySelector('.map__filters');

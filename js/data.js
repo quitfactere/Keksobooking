@@ -20,10 +20,10 @@ let advertisements = [];
 let imageIndex = 1;
 
 // Определяет и записывает в новый массив случайное количество features
-const getFeatures = () => {
+const getFeatures = (featuresArray) => {
   let featuresCount = 0;
   let featuresSelect = [];
-  for (let i = 0; i <= getRandomInt(features.length - features.length, features.length - 1); i++) {
+  for (let i = 0; i <= getRandomInt(featuresArray.length - featuresArray.length, featuresArray.length - 1); i++) {
     featuresCount = i;
     featuresSelect[i] = features[i];
   }
@@ -60,7 +60,7 @@ const addOffers = function () {
     guests: getRandomInt(1, 5),
     checkin: getRandomElementArr(checkin),
     checkout: getRandomElementArr(checkout),
-    features: getFeatures(),
+    features: getFeatures(features),
     description: getRandomElementArr(descriptions),
     photos: photoHouse(),
   };
